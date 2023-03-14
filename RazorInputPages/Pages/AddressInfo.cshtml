@@ -1,0 +1,46 @@
+﻿@page
+@model RazorInputPages.Pages.AddressInfoModel
+@{
+    ViewData["Title"] = "AddressInfo";
+}
+<form method="post">
+    <div class="form-group">
+        @for (int i = 0; i < Model.FullAddresses.Count; i++)
+        {
+            <input type="hidden" asp-for="FullAddresses[i]" />
+        }
+        <input asp-for="AddressStreet"
+               type="text"
+               class="form-control"
+               id="autocomplete"
+               placeholder="Street">
+
+        <input asp-for="City"
+               type="text"
+               class="form-control"
+               id="inputCity"
+               placeholder="City">
+
+        <input asp-for="State"
+               type="text"
+               class="form-control"
+               id="inputState"
+               placeholder="State">
+
+        <input asp-for="ZipCode"
+               type="text"
+               class="form-control"
+               id="inputZip"
+               placeholder="Zip">
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+
+
+
+@foreach (var address in Model.FullAddresses)
+{
+    <h3>@address</h3>
+}
